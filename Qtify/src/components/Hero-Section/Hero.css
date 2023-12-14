@@ -1,0 +1,17 @@
+.hero-section {
+  display: flex;
+  height: 270px;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+
+}
+.hero-para {
+  font-weight: 600;
+  font-size: 32px;
+  color: var(--white-color);
+  text-align: center;
+}
+.hero-para > p {
+  margin: 0px;
+}
