@@ -1,5 +1,5 @@
 import "./searchbar.css"
-import searchIcon from "../../assets/search-icon.svg"
+import searchIcon from "../../assets/Search-Icon.svg"
 import React from "react"
 const Search=()=>{
     return <form action="" className="head-search">
