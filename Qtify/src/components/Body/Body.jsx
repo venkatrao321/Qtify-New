@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchTopAlbum,fetchNewAlbum,fetchSong } from "../../api/api.js";
+import { fetchTopAlbum,fetchNewAlbum,fetchSong,fetchGenres } from "../../api/api.js";
 import "./body.css";
 import Hero from "../Hero-Section/Hero.jsx";
 import Section from "../Section/section.jsx";
@@ -9,6 +9,7 @@ const Body = () => {
   const [topAlbumData, setTopAlbumData] = useState([]);
   const [newAlbumData,setNewAlbumData]=useState([]);
   const [allSongs,setAllSongs]=useState([]);
+  const [AllGenres,setAllGenres]=useState([]);
   const genrateTopAlbumData = async () => {
     try {
       const data = await fetchTopAlbum();
@@ -36,10 +37,20 @@ const Body = () => {
       
     }
   }
+  const fetchAllGenres=async()=>{
+    try {
+      const data= await fetchGenres();
+      console.log(data);
+      setAllGenres([{"key":"all","label":"All"},...data.data]);
+    } catch (error) {
+      
+    }
+  }
   useEffect(() => {
     genrateTopAlbumData();
     genrateNewAlbumData();
     fetchAllSongs();
+    fetchAllGenres();
   }, []);
 
   return (
@@ -48,7 +59,7 @@ const Body = () => {
       <div className="section-wrapper">
         <Section data={topAlbumData} type="album" title="Top Album"></Section>
         <Section data={newAlbumData} type="album" title="New Album"></Section>
-        <FilterSection data={allSongs} type="filterAlbum" title="Songs"></FilterSection>
+        <FilterSection data={allSongs} genres={AllGenres} gentype="filterAlbum" title="Songs"></FilterSection>
       </div>
     </>
   );
