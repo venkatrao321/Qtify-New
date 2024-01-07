@@ -15,13 +15,15 @@
 }
 .carousel-container{
     position: relative;
-    padding: 0px 0px 0px 35px;
 }
 .arrow-right{
-    right: 0;
+    right: 25px;
    
 }
 .arrow-left{
-    left : 0;
+    left : -6px;
    
+}
+.swiper-wrapper{
+    padding: 10px;
 }

@@ -14,14 +14,9 @@ function Carousel({ data, component }) {
     <div  className="carousel-container">
       <Swiper
         modules={[Virtual, Navigation, Pagination]}
-        onSwiper={""}
         slidesPerView={7}
-        //centeredSlides={true}
-        spaceBetween={20}
-        // pagination={{
-        //   type: 'fraction',
-        // }}
-        //navigation={true}
+        spaceBetween={11}
+        onSwiper={(swiper) => console.log(swiper)}
         navigation={{ prevEl: ".arrow-left", nextEl: ".arrow-right" }}
         virtual
       >
@@ -30,9 +25,9 @@ function Carousel({ data, component }) {
             <SwiperSlide>{component(ele)}</SwiperSlide>
           </div>);
         })}
+      <button  className="arrow-left arrow"><img src={LeftArrow} alt="Prev" /></button>
+      <button  className="arrow-right arrow"><img src={RightArrow} alt="Next" /></button>
       </Swiper>
-      <button className="arrow-left arrow"><img src={LeftArrow} alt="Prev" /></button>
-      <button className="arrow-right arrow"><img src={RightArrow} alt="Next" /></button>
     </div>
   );
 }

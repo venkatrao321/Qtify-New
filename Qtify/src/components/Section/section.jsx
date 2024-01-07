@@ -31,6 +31,8 @@ const Section = ({ title, data, type }) => {
               })}
             </div>
           ) : (
+            <div>
+
               <Carousel
                 data={data}
                 component={(data) => {
@@ -38,6 +40,7 @@ const Section = ({ title, data, type }) => {
                }}
               ></Carousel>
           
+            </div>
           )}
         </div>
       }
