@@ -28,7 +28,7 @@ function Card({data,type}){
           <div className='card-img'>
           <img src={image} alt="" height={170} width={159} loading='lazy'/>
           <div className='card-follow-sec'>
-            <button className='follow-btn'>{likes}Likes</button>
+            <button className='follow-btn'>{likes} Likes</button>
           </div>
           </div>
           <div className='card-text'>{title}</div>

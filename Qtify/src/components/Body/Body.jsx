@@ -13,7 +13,7 @@ const Body = () => {
   const genrateTopAlbumData = async () => {
     try {
       const data = await fetchTopAlbum();
-      console.log(data)
+    //  console.log(data)
       setTopAlbumData(data);
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ const Body = () => {
   const genrateNewAlbumData = async () => {
     try {
       const data = await fetchNewAlbum();
-      console.log(data)
+     // console.log(data)
       setNewAlbumData(data);
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ const Body = () => {
   const fetchAllSongs=async()=>{
     try {
       const data= await fetchSong();
-      console.log(data);
+    //  console.log(data);
       setAllSongs(data);
     } catch (error) {
       
@@ -40,7 +40,7 @@ const Body = () => {
   const fetchAllGenres=async()=>{
     try {
       const data= await fetchGenres();
-      console.log(data);
+     // console.log(data);
       setAllGenres([{"key":"all","label":"All"},...data.data]);
     } catch (error) {
       
@@ -59,7 +59,7 @@ const Body = () => {
       <div className="section-wrapper">
         <Section data={topAlbumData} type="album" title="Top Album"></Section>
         <Section data={newAlbumData} type="album" title="New Album"></Section>
-        <FilterSection data={allSongs} genres={AllGenres} gentype="filterAlbum" title="Songs"></FilterSection>
+        <FilterSection data={allSongs} genres={AllGenres} type="filterAlbum" title="Songs"></FilterSection>
       </div>
     </>
   );

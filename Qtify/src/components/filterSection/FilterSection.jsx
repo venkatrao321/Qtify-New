@@ -8,14 +8,23 @@ import Tab from '@mui/material/Tab';
 import { useEffect } from "react";
 
 const FilterSection = ({ title, data,genres, type }) => {
-  const [value, setValue] = useState('All');
-  const [filteredSongs,setFilteredSongs]=useState([data]);
-  console.log(genres)
+  const [value, setValue] = useState('all');
+  const [filteredSongs,setFilteredSongs]=useState(data);
+  //console.log(genres)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   useEffect(()=>{
-
+   let filterdData=data?.filter((items)=>{
+   if(items.genre.key===value){
+   return items
+   }
+   if(value==="all"){
+    return items
+   }
+   })
+   //console.log(filterdData);
+   setFilteredSongs(filterdData);
   },[value])
   return (
     <>
@@ -32,19 +41,20 @@ const FilterSection = ({ title, data,genres, type }) => {
             value={value}
             onChange={handleChange}
             aria-label="Songs tab"
+            textColor="inherit"
           >
             {
               genres.map((data)=>{
-                return <Tab key={data.key} value={data.label} label={data.label} />
+                return <Tab key={data.key} value={data.key} label={data.label} />
               })
             } 
           </Tabs>
-          {/* <Carousel
-            data={data}
-            component={(data) => {
-              return <Card data={data} key={data.id} type={type}></Card>;
+          <Carousel
+            data={filteredSongs}
+            component={(filteredSongs) => {
+              return <Card data={filteredSongs} key={filteredSongs.id} type={type}></Card>;
             }}
-          ></Carousel> */}
+          ></Carousel>
         </div>
       )}
     </>
